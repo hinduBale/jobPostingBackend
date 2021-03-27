@@ -1,0 +1,83 @@
+for creating candidate:
+post request on /candidates/:
+
+{
+    "name": "Rahul Saxena",
+    "email": <your_email>,
+    "age": 22,
+    "password": "rahul@1221"
+}
+
+note candidate_id
+
+It will give a jwt token, use it in postman's authorization tab and set Bearer token to it.
+you need to do it for every request or create a event who does it.
+
+recruiter signup:
+
+post on /recruiter/
+choose both emails in candidate and recruiter which you have access to
+
+{
+    "companyName": "Amazon Inc.",
+    "email": <choose_your_different_email>,
+    "socialHandles":{
+        "website": "amazon.com",
+        "linkedIn": "linkedin.com/amazon"
+    },
+    "officeLocation": "Gurgaon",
+    "contactPerson": "Rahul",
+    "contactNumber": 999999999,
+    "password": "hello@1212"
+}
+
+create a job:
+post on /recruiter/jobs
+
+{
+    "jobDescription": {
+        "jobTitle": "Web Developer",
+        "jobSummary": "develop web app",
+        "lookingFor": [
+            "passionate",
+            "inspiring",
+            "creative"
+        ],
+        "preferredQualifications": [
+            "btech"
+        ],
+        "jobBenefits": [
+            "pay",
+            "food"
+        ],
+        "payRange": "60k/month",
+        "jobLocation": "Remote"
+    },
+    "jobDetails": {
+        "vacancies": 2,
+        "employment": "FULLTIME",
+        "industry": "software"
+    },
+    "companyImgaeUrl": "https://lh3.googleusercontent.com/proxy/m3S4pYcAnan12tXNZ_ATEBvMTz5TJ86qVMavf4rDz-QrbBQNnZagN1bHjjoYUpur1M2QSdca6pciQv1pEnIsUOnh18dgHk7iFCEpLcWYAsrEeNYjWRC6kdeifsZ5UDXDpzosybFQFZDUot91qfyRnZL1H_io1kE"
+}
+
+note the _id value in the given output say job_id.
+
+apply on job:
+
+take candidates jwt token and set it as bearer in authorization.
+
+post on /candidates/applications/job_id
+
+
+you should receive a mail on recruiter mail id.
+
+Accept the candidate:
+
+take recruiters jwt token and set it as bearer token in authorization.
+
+/recruiters/jobs/job_id/candidate_id/accepted
+
+mail on candidates mail id.
+
+Other endpoints work as expected, be sure to input jwt token and correct job_id and candidate_id
