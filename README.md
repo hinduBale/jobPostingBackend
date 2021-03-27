@@ -1,6 +1,7 @@
 # Job Posting - Backend
 
 A service which helps recruiters post jobs and find the most suitable candidates among the applicants.
+Refer the [Helper File](helperFile.txt) for a walkthrough of testing from Postman.
 
 ## Endpoints
 
