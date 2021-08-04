@@ -107,6 +107,7 @@ router.patch("/recruiters/me", auth, async (req, res) => {
   try {
     updates.forEach((update) => {
       //dynamic update
+      //Spread operator
       if (update === "socialHandles") {
         req.recruiter[update] = {
           ...req.recruiter[update],

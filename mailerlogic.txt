@@ -1,0 +1,31 @@
+why using nodemailer: Because it's well maintained and uses asynchronous functions for mailing. Uses SMTP.
+We can also do oauth using nodemailer but then we had to implement the authentication via oauth providers.
+
+function -> nodemailer.createTransport: It's like initiating the way we want to send email. SMTP/OAUTH etc. We can provide our
+own smtp server as well but we're using google's.
+
+renderMailTemplate (in mailer_config.js) -> returning the html we want to send via mail.
+
+sendMail (in mailer.js) -> send's mail after getting the html and sender's info and to whom we're sending.
+
+mailerManager.js: We created an event using eventEmitter it's similar to listner on socket so whenever an 
+event of our choice is emitted we can listen to that and take the action we want to. In microservices architecture
+this is generally what's done. Event based services.
+
+mailerEventEmitter is an event emitter so we can use .emit() on it and emit the event we like.
+and on() is a listner.
+
+
+Queue:
+	- It's a mailer queue.
+	- we can create instances based on how many mailers we want to run in parallel.
+	- We can send different function to run, one handles another service and one handlers another.
+	- We cannot await inside while for all the mails it depends on the number of cores in the system.
+	- this.queueRecheckTime: if response for which function is not called so sendMail will run latest function
+	in every say 10 seconds it will check there is a mail inside of it or not and then run for it.
+	- returnQueue is a testing function to check what values are in the queue.
+	
+why not use as api instead of eventEmitter? We didn't keep it as api, we want to keep as event, in api we will have to make a callback but for event we don't have to do anything it will happen automatically. Also it's closer to a 
+scalable logic we see in microservices.
+
+We can implement otp mailer in it as well

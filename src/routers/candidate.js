@@ -127,7 +127,7 @@ router.get("/candidates/applications", auth, async (req, res) => {
 //Candidate applies for job.
 router.post("/candidates/applications/:job_id", auth, async (req, res) => {
   const job_id = req.params.job_id;
-  console.log(job_id);
+  //console.log(job_id);
 
   try {
     const job = await Job.findOne({ _id: job_id });
